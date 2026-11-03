@@ -1,0 +1,23 @@
+[
+  {
+    "id": "rel_bns318_ipc420",
+    "source_provision_id": "prov_bns_sec318",
+    "target_provision_id": "prov_ipc_sec420",
+    "relation_type": "successor_of",
+    "notes": "Section 318(4) BNS replaces Section 420 IPC for cheating offences committed on or after 1 July 2024."
+  },
+  {
+    "id": "rel_ipc420_bns318",
+    "source_provision_id": "prov_ipc_sec420",
+    "target_provision_id": "prov_bns_sec318",
+    "relation_type": "predecessor_to",
+    "notes": "Section 420 IPC was replaced by Section 318(4) BNS effective 1 July 2024."
+  },
+  {
+    "id": "rel_it66d_bns318",
+    "source_provision_id": "prov_it_sec66c",
+    "target_provision_id": "prov_bns_sec318",
+    "relation_type": "read_with",
+    "notes": "Cyber fraud and identity theft are routinely charged together under IT Act and BNS Cheating."
+  }
+]

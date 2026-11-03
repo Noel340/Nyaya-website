@@ -1,0 +1,52 @@
+[
+  {
+    "id": "src_indiacode",
+    "name": "India Code Information System",
+    "base_url": "https://www.indiacode.nic.in",
+    "official_portal": "https://www.indiacode.nic.in",
+    "description": "Digital repository of all Central and State Acts provided by Legislative Department, Ministry of Law and Justice, Government of India.",
+    "licensing_info": "Government Open Data / Public Domain Legal Enactments (Govt. of India)",
+    "is_verified": 1,
+    "last_checked_at": "2026-11-01"
+  },
+  {
+    "id": "src_legislative",
+    "name": "Legislative Department, Ministry of Law & Justice",
+    "base_url": "https://legislative.gov.in",
+    "official_portal": "https://legislative.gov.in",
+    "description": "Official portal of the Legislative Department hosting the authentic texts of the Constitution of India and Central Acts.",
+    "licensing_info": "Official Indian Legal Publication",
+    "is_verified": 1,
+    "last_checked_at": "2026-11-01"
+  },
+  {
+    "id": "src_nalsa",
+    "name": "National Legal Services Authority (NALSA)",
+    "base_url": "https://nalsa.gov.in",
+    "official_portal": "https://nalsa.gov.in",
+    "description": "Statutory body constituted under Legal Services Authorities Act, 1987 to provide free legal services to the weaker sections.",
+    "licensing_info": "Official Statutory Authority",
+    "is_verified": 1,
+    "last_checked_at": "2026-11-01"
+  },
+  {
+    "id": "src_cybercrime",
+    "name": "National Cyber Crime Reporting Portal (MHA)",
+    "base_url": "https://cybercrime.gov.in",
+    "official_portal": "https://cybercrime.gov.in",
+    "description": "Official portal under Ministry of Home Affairs for reporting cybercrimes with National Cyber Helpline 1930.",
+    "licensing_info": "Government of India Citizen Portal",
+    "is_verified": 1,
+    "last_checked_at": "2026-11-01"
+  },
+  {
+    "id": "src_consumer",
+    "name": "National Consumer Helpline (NCH / INGRAM)",
+    "base_url": "https://consumerhelpline.gov.in",
+    "official_portal": "https://consumerhelpline.gov.in",
+    "description": "Department of Consumer Affairs initiative for consumer grievance registration and dispute resolution guidance.",
+    "licensing_info": "Government of India Citizen Portal",
+    "is_verified": 1,
+    "last_checked_at": "2026-11-01"
+  }
+]

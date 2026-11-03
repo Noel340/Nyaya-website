@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Legal Disclaimer & Safety Information — NyayaGuide{% endblock %}
+
+{% block content %}
+<section style="background: #FFFFFF; border-bottom: 1px solid var(--gold-border); padding: 3rem 1.5rem 2rem;">
+  <div style="max-width: 960px; margin: 0 auto;">
+    <div class="hero-pill" style="margin-bottom: 0.75rem;">
+      <span>Important Notice</span>
+    </div>
+    <h1 class="font-serif" style="font-size: 2.3rem; color: var(--navy); margin-bottom: 0.5rem;">
+      Legal Disclaimer & Citizen Safety
+    </h1>
+    <p style="color: var(--text-muted); font-size: 1.05rem;">
+      Please read this advisory carefully before using the NyayaGuide platform.
+    </p>
+  </div>
+</section>
+
+<section style="max-width: 960px; margin: 2.5rem auto 4rem; padding: 0 1.5rem;">
+  <div class="legal-card" style="margin-bottom: 2rem;">
+    <h2 class="font-serif" style="font-size: 1.45rem; color: var(--navy); margin-bottom: 0.85rem;">
+      1. General Legal Information, Not Legal Advice
+    </h2>
+    <p style="color: var(--text-main); margin-bottom: 1rem; line-height: 1.65;">
+      NyayaGuide is an automated informational tool designed for legal literacy and public awareness. <strong>The information provided on this platform does not constitute legal advice, a formal legal opinion, or an advocate-client relationship under the Advocates Act, 1961.</strong>
+    </p>
+    <p style="color: var(--text-main); margin-bottom: 1rem; line-height: 1.65;">
+      Every legal situation depends on nuanced facts, specific jurisdictional rules, limitation periods, and evolving judicial precedents. You should never act, or refrain from acting, solely on the basis of information obtained from this platform without consulting a qualified advocate enrolled with a State Bar Council.
+    </p>
+
+    <h2 class="font-serif" style="font-size: 1.45rem; color: var(--navy); margin-bottom: 0.85rem;">
+      2. Emergency Situations & Ongoing Crimes
+    </h2>
+    <p style="color: var(--text-main); margin-bottom: 1rem; line-height: 1.65;">
+      If you are in immediate physical danger, facing violent threats, domestic abuse, or active financial cyber fraud:
+    </p>
+    <ul style="margin-left: 1.5rem; line-height: 1.7; margin-bottom: 1.25rem;">
+      <li><strong>National Emergency Number:</strong> Dial <strong>112</strong> for immediate police assistance.</li>
+      <li><strong>Financial Cyber Fraud Helpline:</strong> Dial <strong>1930</strong> immediately to report unauthorized bank transactions (Golden Hour intervention).</li>
+      <li><strong>Women Distress Helpline:</strong> Dial <strong>1091</strong> or <strong>181</strong>.</li>
+      <li><strong>National Legal Aid Helpline:</strong> Dial <strong>15100</strong> (Toll-free NALSA).</li>
+    </ul>
+
+    <h2 class="font-serif" style="font-size: 1.45rem; color: var(--navy); margin-bottom: 0.85rem;">
+      3. Privacy & Data Handling
+    </h2>
+    <p style="color: var(--text-main); line-height: 1.65; margin-bottom: 0.5rem;">
+      • We do not require account registration or identity verification to search for laws.<br>
+      • We do not publicly store, index, or sell personal descriptions of legal problems.<br>
+      • Speech-to-text processing occurs natively within your browser using the Web Speech API. Audio is not recorded or transmitted to our servers.<br>
+      • Always exercise caution and avoid typing sensitive personal identifiers (Aadhaar number, bank PINs, or passwords) into any search input.
+    </p>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}System Error (500) — NyayaGuide{% endblock %}
+
+{% block content %}
+<section style="text-align: center; padding: 5rem 1.5rem;">
+  <div style="max-width: 600px; margin: 0 auto;" class="legal-card">
+    <div style="font-size: 3.5rem; font-weight: 800; color: #DC2626; line-height: 1;">500</div>
+    <h2 class="font-serif" style="font-size: 1.6rem; color: var(--navy); margin: 1rem 0;">System Notice</h2>
+    <p style="color: var(--text-muted); margin-bottom: 2rem;">
+      An unexpected error occurred while processing your request. Our legal database and services remain intact.
+    </p>
+    <a href="{{ url_for('index') }}" class="btn-primary">Return to NyayaGuide Home</a>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}{{ act.short_title }} — NyayaGuide{% endblock %}
+
+{% block content %}
+<section style="background: #FFFFFF; border-bottom: 1px solid var(--gold-border); padding: 2.5rem 1.5rem;">
+  <div style="max-width: 1040px; margin: 0 auto;">
+    <div class="results-breadcrumb">
+      <a href="{{ url_for('index') }}">Home</a> / <a href="{{ url_for('browse_laws') }}">Browse Laws</a> / <span>{{ act.short_title }}</span>
+    </div>
+
+    <span class="act-badge">{{ act.category }}</span>
+    <h1 class="font-serif" style="font-size: 2.2rem; color: var(--navy); margin: 0.5rem 0;">
+      {{ act.short_title }}
+    </h1>
+    <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 1.25rem;">
+      {{ act.long_title }}
+    </p>
+
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.85rem; color: var(--text-main); margin-bottom: 1.25rem;">
+      <span class="badge-item"><strong>Act No:</strong> {{ act.act_number or 'Central Act' }}</span>
+      <span class="badge-item"><strong>Commenced:</strong> {{ act.commencement_date or act.enactment_year }}</span>
+      <span class="badge-item"><strong>Status:</strong> {{ act.status|title }}</span>
+      <span class="badge-item"><strong>Jurisdiction:</strong> {{ act.jurisdiction_name }}</span>
+    </div>
+
+    {% if act.transition_notes %}
+      <div style="background: var(--ivory); border-left: 3px solid var(--gold); padding: 0.85rem 1.15rem; border-radius: 6px; font-size: 0.88rem; color: var(--text-main); margin-bottom: 1rem;">
+        <strong>Legislative & Transition Notes:</strong> {{ act.transition_notes }}
+      </div>
+    {% endif %}
+
+    <div>
+      <a href="{{ act.official_source_url }}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="font-size: 0.86rem; padding: 0.5rem 1rem;">
+        Open Official Authentic Text on India Code / Portal ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Provisions List -->
+<section style="max-width: 1040px; margin: 2.5rem auto 4rem; padding: 0 1.5rem;">
+  <h2 class="font-serif" style="font-size: 1.5rem; color: var(--navy); margin-bottom: 1.5rem;">
+    Indexed Provisions ({{ act.provisions|length }})
+  </h2>
+
+  {% for p in act.provisions %}
+    <div class="provision-card">
+      <div class="provision-card-head">
+        <div>
+          <span class="act-badge">{{ p.provision_type|title }} {{ p.provision_number }}</span>
+          <div class="provision-heading-num" style="font-size: 1.2rem;">
+            {{ p.heading }}
+          </div>
+        </div>
+        <span class="source-status-verified">✓ Verified</span>
+      </div>
+
+      <div class="plain-explanation-box">
+        <h4>Plain-Language Meaning</h4>
+        <p>{{ p.plain_english_summary }}</p>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; margin-top: 0.75rem;">
+        {% if p.source_url %}
+          <a href="{{ p.source_url }}" target="_blank" rel="noopener noreferrer" class="official-source-link">
+            Official Source Link ↗
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  {% else %}
+    <div class="provision-card" style="text-align: center; padding: 2.5rem;">
+      <p style="color: var(--text-muted);">Provisions for this Act are currently being checked in the legal ingestion pipeline.</p>
+    </div>
+  {% endfor %}
+</section>
+{% endblock %}

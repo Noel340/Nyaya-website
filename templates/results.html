@@ -1,0 +1,300 @@
+{% extends "base.html" %}
+
+{% block title %}Potentially Relevant Indian Laws — NyayaGuide Results{% endblock %}
+
+{% block content %}
+<!-- Results Header & Actions Bar -->
+<section class="results-page-header">
+  <div class="results-header-container">
+    <div class="results-breadcrumb">
+      <a href="{{ url_for('index') }}">Home</a> / <a href="{{ url_for('index') }}#situation_panel">Find My Rights</a> / <span>Legal Awareness Assessment</span>
+    </div>
+
+    <div class="results-title-row">
+      <div>
+        <h1 class="font-serif" style="font-size: 2.2rem; color: var(--navy);">Legal Awareness Assessment</h1>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">
+          Analysis grounded in verified Indian statutory records and constitutional provisions.
+        </p>
+      </div>
+
+      <!-- Export Actions -->
+      <div class="results-export-actions">
+        <button type="button" class="btn-export" id="print_results_btn" title="Print or save as PDF">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          Print / Save PDF
+        </button>
+
+        <button type="button" class="btn-export" id="copy_results_btn" title="Copy text summary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          Copy Summary
+        </button>
+      </div>
+    </div>
+
+    <!-- Situation Summary Card -->
+    <div class="situation-summary-card" id="copyable_summary_content">
+      <div class="summary-badges-bar">
+        <span class="badge-item">
+          <strong>Jurisdiction:</strong> {{ explanation.jurisdiction }}
+        </span>
+        {% if incident_date %}
+          <span class="badge-item">
+            <strong>Incident Date:</strong> {{ incident_date }}
+          </span>
+        {% endif %}
+        <span class="badge-item">
+          <strong>Status:</strong> Potentially Relevant Provisions Identified
+        </span>
+        <span class="badge-item" style="color: var(--green-dark); background: var(--green-light);">
+          ✓ Verified Official Sources
+        </span>
+      </div>
+
+      <h3 class="font-serif" style="font-size: 1.15rem; color: var(--navy); margin-bottom: 0.5rem;">Factual Context</h3>
+      <p style="font-size: 0.95rem; color: var(--text-main); line-height: 1.6; margin-bottom: 1rem;">
+        {{ explanation.issue_summary }}
+      </p>
+
+      {% if explanation.clarifying_questions %}
+        <div style="background: #FFFFFF; border-left: 3px solid var(--gold); padding: 0.85rem 1.15rem; border-radius: 6px;">
+          <h4 style="font-size: 0.85rem; font-weight: 700; color: var(--navy); margin-bottom: 0.35rem;">
+            Questions Still Requiring Clarification:
+          </h4>
+          <ul style="margin-left: 1.25rem; font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
+            {% for q in explanation.clarifying_questions %}
+              <li>{{ q }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
+      {% if explanation.urgent_help %}
+        <div style="background: #FEE2E2; border: 1px solid #F87171; border-radius: 6px; padding: 0.85rem 1.15rem; margin-top: 1rem; color: #991B1B; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <div><strong>URGENT ASSISTANCE:</strong> {{ explanation.urgent_help }}</div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- Results Main Grid Layout -->
+<section class="results-layout-grid">
+  <!-- Left Column: Provisions & Legal Analysis -->
+  <div class="results-main-column">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+      <h2 class="font-serif" style="font-size: 1.55rem; color: var(--navy);">
+        Potentially Applicable Provisions ({{ provisions|length }})
+      </h2>
+      <span style="font-size: 0.82rem; color: var(--text-muted);">
+        Not a definitive finding of liability or guilt.
+      </span>
+    </div>
+
+    {% if not provisions %}
+      <div class="provision-card" style="text-align: center; padding: 3rem 1.5rem;">
+        <h3 class="font-serif" style="font-size: 1.35rem; color: var(--navy); margin-bottom: 0.75rem;">No Direct Section Found</h3>
+        <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto 1.5rem;">
+          No verified statutory provisions in our database sufficiently matched your description. We do not invent or fabricate legal sections.
+        </p>
+        <a href="{{ url_for('index') }}#situation_panel" class="btn-secondary">Describe in More Detail</a>
+      </div>
+    {% else %}
+      {% for p in provisions %}
+        <div class="provision-card {% if p.act_id == 'act_constitution' %}is-constitution{% elif 'bns' in p.act_id %}is-bns{% endif %}">
+          <!-- Provision Head -->
+          <div class="provision-card-head">
+            <div>
+              <span class="act-badge">{{ p.act_title }}</span>
+              {% if p.act_id == 'act_constitution' %}
+                <span class="act-badge" style="background: var(--gold-light); color: var(--gold-dark); border-color: var(--gold);">
+                  Supreme Constitutional Law
+                </span>
+              {% endif %}
+              <div class="provision-heading-num">
+                {{ p.provision_type|title }} {{ p.provision_number }}: {{ p.heading }}
+              </div>
+              {% if p.chapter %}
+                <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem;">
+                  {{ p.chapter }}
+                </div>
+              {% endif %}
+            </div>
+
+            <div>
+              <span class="source-status-verified">
+                ✓ {{ p.verification_status|title }} Source
+              </span>
+            </div>
+          </div>
+
+          <!-- Transition Warning Banner if applicable -->
+          {% if p.transition_warning %}
+            <div style="background: #FEF3C7; border: 1px solid #FCD34D; border-radius: 6px; padding: 0.65rem 0.95rem; font-size: 0.82rem; color: #92400E; margin-bottom: 0.85rem;">
+              <strong>Note on Criminal Law Reform:</strong> {{ p.transition_warning }}
+            </div>
+          {% endif %}
+
+          <!-- Plain-English Explanation -->
+          <div class="plain-explanation-box">
+            <h4>Simple Explanation</h4>
+            <p>{{ p.plain_english_summary }}</p>
+          </div>
+
+          <!-- Why Relevant to Described Facts -->
+          {% if p.why_relevant_explanation %}
+            <div style="margin: 0.85rem 0; font-size: 0.9rem;">
+              <strong style="color: var(--navy);">Why it may apply:</strong>
+              <span style="color: var(--text-main);">{{ p.why_relevant_explanation }}</span>
+            </div>
+          {% endif %}
+
+          <!-- Conditions to Establish -->
+          {% if p.conditions_to_establish %}
+            <div style="margin: 0.85rem 0; font-size: 0.86rem; background: #FAF9F6; padding: 0.75rem 1rem; border-radius: 6px; border: 1px solid var(--gold-border);">
+              <strong style="color: var(--navy); display: block; margin-bottom: 0.25rem;">Conditions that must be substantiated:</strong>
+              <div style="white-space: pre-line; color: var(--text-main);">{{ p.conditions_to_establish }}</div>
+            </div>
+          {% endif %}
+
+          <!-- Exceptions & Limitations -->
+          {% if p.exceptions_and_limitations %}
+            <div style="margin: 0.85rem 0; font-size: 0.84rem; color: var(--text-muted);">
+              <strong>Important Exceptions & Limitations:</strong>
+              <span>{{ p.exceptions_and_limitations }}</span>
+            </div>
+          {% endif %}
+
+          <!-- Cross-statutory Relations (e.g. BNS 318 <-> IPC 420) -->
+          {% if p.relations %}
+            <div style="margin-top: 0.65rem; padding-top: 0.65rem; border-top: 1px dashed var(--gold-border); font-size: 0.82rem;">
+              <span style="font-weight: 600; color: var(--navy);">Related Provisions:</span>
+              {% for rel in p.relations %}
+                <span style="display: inline-block; background: var(--ivory); padding: 0.15rem 0.5rem; border-radius: 4px; border: 1px solid var(--gold-border); margin-left: 0.35rem;">
+                  {{ rel.related_act }} ({{ rel.related_num }}) — <em>{{ rel.relation_type|replace('_', ' ') }}</em>
+                </span>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          <!-- Expandable Statutory Original Text -->
+          <div class="statutory-text-collapse">
+            <details>
+              <summary>View Official Statutory Text (India Code / Gazette)</summary>
+              <div class="official-text-quote">
+                "{{ p.official_text }}"
+              </div>
+            </details>
+          </div>
+
+          <!-- Card Footer & Official Source Link -->
+          <div class="provision-footer-row">
+            <div style="font-size: 0.76rem; color: var(--text-muted);">
+              Enforced: {{ p.effective_from or 'Enacted' }} | Status: <strong>{{ p.status|title }}</strong>
+            </div>
+
+            {% if p.source_url %}
+              <a href="{{ p.source_url }}" target="_blank" rel="noopener noreferrer" class="official-source-link">
+                Open Official Source on India Code / Portal ↗
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <!-- Right Sidebar: Practice Area Recommendations, Legal Aid, Next Steps -->
+  <aside class="results-sidebar-column">
+    <!-- Which Lawyer Should I Contact? -->
+    <div class="results-sidebar-card">
+      <h3 class="sidebar-card-title font-serif">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>
+        Recommended Lawyer Category
+      </h3>
+      <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 1rem;">
+        Based on the retrieved statutory provisions, the following legal practice areas are typically relevant:
+      </p>
+
+      {% for lawyer_title in explanation.lawyer_practice_areas %}
+        <div class="lawyer-type-pill">
+          <h4>{{ lawyer_title }}</h4>
+          <p>Qualified advocate enrolled with the State Bar Council handling disputes of this subject matter.</p>
+        </div>
+      {% endfor %}
+
+      <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.75rem; border-top: 1px dashed var(--gold-border); padding-top: 0.65rem;">
+        <strong>Note:</strong> We never display fabricated individual lawyer profiles or phone numbers. Ensure any lawyer you consult is verified with your State Bar Council.
+      </div>
+    </div>
+
+    <!-- Practical Next Steps -->
+    <div class="results-sidebar-card">
+      <h3 class="sidebar-card-title font-serif">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 11 12 14 22 4"></polyline>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+        </svg>
+        Practical Next Steps
+      </h3>
+      <ul style="margin-left: 1.15rem; font-size: 0.88rem; color: var(--text-main); line-height: 1.6;">
+        {% for step in explanation.possible_next_steps %}
+          <li style="margin-bottom: 0.5rem;">{{ step }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- Verified Legal Aid Resources -->
+    <div class="results-sidebar-card">
+      <h3 class="sidebar-card-title font-serif">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        Verified Legal Aid & Helplines
+      </h3>
+      
+      {% for aid in legal_aid_list %}
+        <div class="legal-aid-item">
+          <h4>{{ aid.title }}</h4>
+          {% if aid.helpline_number %}
+            <span class="aid-helpline-chip">Helpline: {{ aid.helpline_number }}</span>
+          {% endif %}
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">
+            {{ aid.description }}
+          </p>
+          {% if aid.official_portal %}
+            <a href="{{ aid.official_portal }}" target="_blank" rel="noopener noreferrer" style="font-size: 0.78rem; font-weight: 600; color: var(--navy); display: inline-block; margin-top: 0.25rem;">
+              Visit Official Portal ↗
+            </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      <div style="margin-top: 1rem; text-align: center;">
+        <a href="{{ url_for('legal_resources') }}" style="font-size: 0.84rem; font-weight: 600; color: var(--saffron-dark);">
+          View Complete Directory across All States →
+        </a>
+      </div>
+    </div>
+  </aside>
+</section>
+{% endblock %}

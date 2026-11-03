@@ -1,0 +1,335 @@
+[
+  {
+    "id": "IN-CENTRAL",
+    "code": "IN",
+    "name": "All India / Central",
+    "type": "central",
+    "official_portal_url": "https://www.indiacode.nic.in",
+    "coverage_status": "indexed_seed",
+    "notes": "Central statutes including Constitution of India, Bharatiya Nyaya Sanhita, Consumer Protection Act, IT Act, DPDP Act, MV Act, etc."
+  },
+  {
+    "id": "IN-DL",
+    "code": "DL",
+    "name": "Delhi (NCT)",
+    "type": "union_territory",
+    "official_portal_url": "https://delhicourts.nic.in",
+    "coverage_status": "indexed_seed",
+    "notes": "Delhi Rent Control Act, Delhi Police & DSLSA Legal Aid Services indexed."
+  },
+  {
+    "id": "IN-KA",
+    "code": "KA",
+    "name": "Karnataka",
+    "type": "state",
+    "official_portal_url": "https://karsac.kar.nic.in",
+    "coverage_status": "indexed_seed",
+    "notes": "Karnataka Rent Control, Karnataka SLSA (KSLSA), Cyber Crime Police Stations indexed."
+  },
+  {
+    "id": "IN-MH",
+    "code": "MH",
+    "name": "Maharashtra",
+    "type": "state",
+    "official_portal_url": "https://legalservices.maharashtra.gov.in",
+    "coverage_status": "indexed_seed",
+    "notes": "Maharashtra Rent Control Act 1999, MSLSA resources indexed."
+  },
+  {
+    "id": "IN-KL",
+    "code": "KL",
+    "name": "Kerala",
+    "type": "state",
+    "official_portal_url": "https://kelsa.nic.in",
+    "coverage_status": "indexed_seed",
+    "notes": "Kerala Buildings (Lease and Rent Control) Act, KeLSA Legal Aid indexed."
+  },
+  {
+    "id": "IN-TN",
+    "code": "TN",
+    "name": "Tamil Nadu",
+    "type": "state",
+    "official_portal_url": "https://tnlsa.tn.gov.in",
+    "coverage_status": "indexed_seed",
+    "notes": "Tamil Nadu Regulation of Rights and Responsibilities of Landlords and Tenants Act, TNSLSA indexed."
+  },
+  {
+    "id": "IN-UP",
+    "code": "UP",
+    "name": "Uttar Pradesh",
+    "type": "state",
+    "official_portal_url": "https://upslsa.up.nic.in",
+    "coverage_status": "indexed_seed",
+    "notes": "UP Urban Buildings Regulation of Letting Act, UPSLSA legal aid indexed."
+  },
+  {
+    "id": "IN-WB",
+    "code": "WB",
+    "name": "West Bengal",
+    "type": "state",
+    "official_portal_url": "https://wbslsa.wb.gov.in",
+    "coverage_status": "indexed_seed",
+    "notes": "West Bengal Premises Tenancy Act, WBSLSA indexed."
+  },
+  {
+    "id": "IN-TG",
+    "code": "TG",
+    "name": "Telangana",
+    "type": "state",
+    "official_portal_url": "https://tgslsa.gov.in",
+    "coverage_status": "indexed_seed",
+    "notes": "Telangana Buildings Lease Rent & Eviction Control, TGSLSA indexed."
+  },
+  {
+    "id": "IN-GJ",
+    "code": "GJ",
+    "name": "Gujarat",
+    "type": "state",
+    "official_portal_url": "https://gslsa.gujarat.gov.in",
+    "coverage_status": "indexed_seed",
+    "notes": "Gujarat Rent Control provisions, GSLSA indexed."
+  },
+  {
+    "id": "IN-RJ",
+    "code": "RJ",
+    "name": "Rajasthan",
+    "type": "state",
+    "official_portal_url": "https://rlsa.gov.in",
+    "coverage_status": "indexed_seed",
+    "notes": "Rajasthan Rent Control Act 2001, RSLSA legal aid indexed."
+  },
+  {
+    "id": "IN-PB",
+    "code": "PB",
+    "name": "Punjab",
+    "type": "state",
+    "official_portal_url": "https://pulsa.punjab.gov.in",
+    "coverage_status": "partially_indexed",
+    "notes": "East Punjab Urban Rent Restriction Act, PULSA legal aid."
+  },
+  {
+    "id": "IN-HR",
+    "code": "HR",
+    "name": "Haryana",
+    "type": "state",
+    "official_portal_url": "https://hslsa.gov.in",
+    "coverage_status": "partially_indexed",
+    "notes": "Haryana Urban Control of Rent Act, HALSA legal aid."
+  },
+  {
+    "id": "IN-BR",
+    "code": "BR",
+    "name": "Bihar",
+    "type": "state",
+    "official_portal_url": "https://bslsa.bihar.gov.in",
+    "coverage_status": "partially_indexed",
+    "notes": "Bihar Buildings Lease Rent and Eviction Control Act, BSLSA legal aid."
+  },
+  {
+    "id": "IN-AP",
+    "code": "AP",
+    "name": "Andhra Pradesh",
+    "type": "state",
+    "official_portal_url": "https://apslsa.ap.nic.in",
+    "coverage_status": "partially_indexed",
+    "notes": "AP Buildings Lease Rent and Eviction Control, APSLSA legal aid."
+  },
+  {
+    "id": "IN-MP",
+    "code": "MP",
+    "name": "Madhya Pradesh",
+    "type": "state",
+    "official_portal_url": "https://mpslsa.gov.in",
+    "coverage_status": "partially_indexed",
+    "notes": "MP Accommodation Control Act, MPSLSA legal aid."
+  },
+  {
+    "id": "IN-OR",
+    "code": "OR",
+    "name": "Odisha",
+    "type": "state",
+    "official_portal_url": "https://oslsa.gov.in",
+    "coverage_status": "partially_indexed",
+    "notes": "Odisha House Rent Control Act, OSLSA legal aid."
+  },
+  {
+    "id": "IN-AS",
+    "code": "AS",
+    "name": "Assam",
+    "type": "state",
+    "official_portal_url": "https://aslsa.assam.gov.in",
+    "coverage_status": "partially_indexed",
+    "notes": "Assam Urban Areas Rent Control Act, ASLSA legal aid."
+  },
+  {
+    "id": "IN-JH",
+    "code": "JH",
+    "name": "Jharkhand",
+    "type": "state",
+    "official_portal_url": "https://jhalsa.org",
+    "coverage_status": "partially_indexed",
+    "notes": "Jharkhand Buildings Lease, Rent and Eviction Control Act, JHALSA legal aid."
+  },
+  {
+    "id": "IN-CT",
+    "code": "CT",
+    "name": "Chhattisgarh",
+    "type": "state",
+    "official_portal_url": "https://cgslsa.gov.in",
+    "coverage_status": "partially_indexed",
+    "notes": "Chhattisgarh Bhada Niyantran Adhiniyam, CGSLSA legal aid."
+  },
+  {
+    "id": "IN-GA",
+    "code": "GA",
+    "name": "Goa",
+    "type": "state",
+    "official_portal_url": "https://slsagoa.nic.in",
+    "coverage_status": "partially_indexed",
+    "notes": "Goa Buildings Lease Rent and Eviction Control Act, Goa SLSA."
+  },
+  {
+    "id": "IN-HP",
+    "code": "HP",
+    "name": "Himachal Pradesh",
+    "type": "state",
+    "official_portal_url": "https://hpslsa.nic.in",
+    "coverage_status": "partially_indexed",
+    "notes": "HP Urban Rent Control Act, HPSLSA legal aid."
+  },
+  {
+    "id": "IN-UT",
+    "code": "UT",
+    "name": "Uttarakhand",
+    "type": "state",
+    "official_portal_url": "https://ukslsa.uk.gov.in",
+    "coverage_status": "partially_indexed",
+    "notes": "Uttarakhand SLSA legal aid."
+  },
+  {
+    "id": "IN-AR",
+    "code": "AR",
+    "name": "Arunachal Pradesh",
+    "type": "state",
+    "official_portal_url": "https://apslsa.nic.in",
+    "coverage_status": "monitoring",
+    "notes": "APSLSA legal aid services."
+  },
+  {
+    "id": "IN-MN",
+    "code": "MN",
+    "name": "Manipur",
+    "type": "state",
+    "official_portal_url": "https://maslsa.nic.in",
+    "coverage_status": "monitoring",
+    "notes": "MASLSA legal aid services."
+  },
+  {
+    "id": "IN-ML",
+    "code": "ML",
+    "name": "Meghalaya",
+    "type": "state",
+    "official_portal_url": "https://mslsa.gov.in",
+    "coverage_status": "monitoring",
+    "notes": "MSLSA legal aid services."
+  },
+  {
+    "id": "IN-MZ",
+    "code": "MZ",
+    "name": "Mizoram",
+    "type": "state",
+    "official_portal_url": "https://mizoramslsa.nic.in",
+    "coverage_status": "monitoring",
+    "notes": "MZSLSA legal aid services."
+  },
+  {
+    "id": "IN-NL",
+    "code": "NL",
+    "name": "Nagaland",
+    "type": "state",
+    "official_portal_url": "https://nslsa.nagaland.gov.in",
+    "coverage_status": "monitoring",
+    "notes": "NSLSA legal aid services."
+  },
+  {
+    "id": "IN-SK",
+    "code": "SK",
+    "name": "Sikkim",
+    "type": "state",
+    "official_portal_url": "https://sikkimslsa.nic.in",
+    "coverage_status": "monitoring",
+    "notes": "SSSLSA legal aid services."
+  },
+  {
+    "id": "IN-TR",
+    "code": "TR",
+    "name": "Tripura",
+    "type": "state",
+    "official_portal_url": "https://tslsa.nic.in",
+    "coverage_status": "monitoring",
+    "notes": "TSLSA legal aid services."
+  },
+  {
+    "id": "IN-JK",
+    "code": "JK",
+    "name": "Jammu & Kashmir",
+    "type": "union_territory",
+    "official_portal_url": "https://jkslsa.gov.in",
+    "coverage_status": "partially_indexed",
+    "notes": "JKSLSA legal aid services."
+  },
+  {
+    "id": "IN-LA",
+    "code": "LA",
+    "name": "Ladakh",
+    "type": "union_territory",
+    "official_portal_url": "https://ladakh.nic.in",
+    "coverage_status": "monitoring",
+    "notes": "Ladakh Legal Services Authority."
+  },
+  {
+    "id": "IN-CH",
+    "code": "CH",
+    "name": "Chandigarh",
+    "type": "union_territory",
+    "official_portal_url": "https://chdslsa.gov.in",
+    "coverage_status": "partially_indexed",
+    "notes": "Chandigarh SLSA legal aid."
+  },
+  {
+    "id": "IN-PY",
+    "code": "PY",
+    "name": "Puducherry",
+    "type": "union_territory",
+    "official_portal_url": "https://legal.py.gov.in",
+    "coverage_status": "monitoring",
+    "notes": "Puducherry Legal Services Authority."
+  },
+  {
+    "id": "IN-AN",
+    "code": "AN",
+    "name": "Andaman & Nicobar Islands",
+    "type": "union_territory",
+    "official_portal_url": "https://andssw1.and.nic.in",
+    "coverage_status": "monitoring",
+    "notes": "A&N Legal Services Authority."
+  },
+  {
+    "id": "IN-DN",
+    "code": "DN",
+    "name": "Dadra & Nagar Haveli and Daman & Diu",
+    "type": "union_territory",
+    "official_portal_url": "https://daman.nic.in",
+    "coverage_status": "monitoring",
+    "notes": "DNH & DD Legal Services Authority."
+  },
+  {
+    "id": "IN-LD",
+    "code": "LD",
+    "name": "Lakshadweep",
+    "type": "union_territory",
+    "official_portal_url": "https://lakshadweep.gov.in",
+    "coverage_status": "monitoring",
+    "notes": "Lakshadweep Legal Services Authority."
+  }
+]

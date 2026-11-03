@@ -1,0 +1,82 @@
+[
+  {
+    "id": "lawyer_cybercrime",
+    "practice_area_code": "CYBER",
+    "practice_area_title": "Cybercrime & Digital Evidence Lawyer",
+    "description": "Specializes in online financial fraud, cyber-stalking, unauthorized computer access, digital extortion, and electronic evidence preservation under BSA 2023 / IT Act.",
+    "when_needed_criteria": "Recommended when facing complex online financial scams, account takeover, non-consensual image distribution, or when dealing with cybercrime police units and digital evidence certificates.",
+    "bar_council_guidance": "Consult advocates enrolled with your State Bar Council possessing specialized experience in cyber forensics and information technology law."
+  },
+  {
+    "id": "lawyer_consumer",
+    "practice_area_code": "CONSUMER",
+    "practice_area_title": "Consumer Dispute & Redressal Advocate",
+    "description": "Focuses on deficiency of service, non-delivery of products by e-commerce companies, medical negligence, insurance claim repudiations, and complaints before District/State Consumer Commissions.",
+    "when_needed_criteria": "Recommended when an e-commerce platform, manufacturer, builder, or service provider fails to deliver, denies a lawful refund, or engages in unfair trade practices.",
+    "bar_council_guidance": "Consumers can also represent themselves in Consumer Commissions, or engage a verified advocate registered with the local District Consumer Bar Association."
+  },
+  {
+    "id": "lawyer_criminal",
+    "practice_area_code": "CRIMINAL",
+    "practice_area_title": "Criminal Defence & Prosecution Advocate",
+    "description": "Handles FIR registration, anticipatory bail, regular bail, police interrogation rights, trial defence, and criminal complaints under Bharatiya Nyaya Sanhita (BNS) and BNSS.",
+    "when_needed_criteria": "Recommended whenever there is a risk of arrest, severe physical threats, extortion, cognizable cheating, or when navigating police station proceedings.",
+    "bar_council_guidance": "Always engage an advocate enrolled with your State Bar Council. If unable to afford counsel, you have a statutory right to free legal aid from DLSA under Article 39A."
+  },
+  {
+    "id": "lawyer_employment",
+    "practice_area_code": "LABOUR",
+    "practice_area_title": "Labour & Employment Law Advocate",
+    "description": "Advises on wrongful termination, unpaid salary claims, non-compete covenants, severance packages, workplace sexual harassment (POSH), and labour court proceedings.",
+    "when_needed_criteria": "Recommended when your employer withholds salary, illegally terminates your contract without notice pay, or fails to settle full-and-final dues.",
+    "bar_council_guidance": "Verify that the advocate regularly practices before Labour Courts, Industrial Tribunals, or the High Court in employment matters."
+  },
+  {
+    "id": "lawyer_property",
+    "practice_area_code": "PROPERTY",
+    "practice_area_title": "Property & Tenancy Advocate",
+    "description": "Specializes in rental security deposit disputes, lease agreements, eviction proceedings, title verification, and civil suits under Transfer of Property Act and State Rent Acts.",
+    "when_needed_criteria": "Recommended when landlords unlawfully retain security deposits, threaten illegal eviction, or when title/tenancy disputes arise.",
+    "bar_council_guidance": "Consult civil advocates practicing before local Civil Courts or Rent Controllers in the municipal jurisdiction where the property is situated."
+  },
+  {
+    "id": "lawyer_constitutional",
+    "practice_area_code": "CONSTITUTIONAL",
+    "practice_area_title": "Constitutional & Writ Law Advocate",
+    "description": "Expert in filing Writ Petitions (Habeas Corpus, Mandamus, Certiorari) before High Courts (Art 226) and Supreme Court (Art 32) against arbitrary government actions.",
+    "when_needed_criteria": "Recommended when public authorities, government departments, or universities violate your fundamental rights or act without legal authority.",
+    "bar_council_guidance": "Engage an advocate practicing directly before the relevant State High Court or Supreme Court of India."
+  },
+  {
+    "id": "lawyer_family",
+    "practice_area_code": "FAMILY",
+    "practice_area_title": "Family & Matrimonial Advocate",
+    "description": "Handles maintenance under BNSS Sec 144, domestic violence protection orders, mutual and contested divorce, child custody, and family court mediation.",
+    "when_needed_criteria": "Recommended during marital disputes, domestic abuse, denial of maintenance to dependent spouse or children, or child custody disputes.",
+    "bar_council_guidance": "Look for practitioners enrolled with the local Family Court Bar Association who emphasize conciliation and mediation."
+  },
+  {
+    "id": "lawyer_banking",
+    "practice_area_code": "BANKING",
+    "practice_area_title": "Banking & Financial Dispute Advocate",
+    "description": "Handles cheque bounce cases under Section 138 NI Act, loan recovery harassment by recovery agents, RBI Banking Ombudsman complaints, and DRT proceedings.",
+    "when_needed_criteria": "Recommended when a cheque is dishonoured, when facing aggressive loan recovery tactics, or in unauthorized banking transactions.",
+    "bar_council_guidance": "Engage an advocate with expertise in negotiable instruments, criminal courts, and consumer forums."
+  },
+  {
+    "id": "lawyer_mact",
+    "practice_area_code": "MACT",
+    "practice_area_title": "Motor Accident Claims (MACT) Advocate",
+    "description": "Specializes in claiming compensation for road accident injuries, fatalities, hit-and-run incidents, and third-party insurance claims before Claims Tribunals.",
+    "when_needed_criteria": "Recommended following serious motor vehicle accidents to secure statutory compensation from insurance companies within the 6-month limitation period.",
+    "bar_council_guidance": "Verify the advocate's experience before the local Motor Accidents Claims Tribunal."
+  },
+  {
+    "id": "lawyer_civil",
+    "practice_area_code": "CIVIL",
+    "practice_area_title": "Civil Litigation Advocate",
+    "description": "Advises on contract breaches, recovery of money, injunctions against third parties, responding to legal notices, and declaratory civil suits.",
+    "when_needed_criteria": "Recommended upon receiving a formal legal notice from another party or when preparing to initiate civil litigation for damages.",
+    "bar_council_guidance": "Ensure timely replies to legal notices through an enrolled advocate to protect your legal defence."
+  }
+]

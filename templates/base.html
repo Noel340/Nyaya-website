@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}NyayaGuide — Indian Legal Awareness Assistant{% endblock %}</title>
+  <meta name="description" content="AI-powered Indian legal awareness platform. Understand your constitutional and statutory rights in simple everyday language with verified official sources.">
+  
+  <!-- Favicon / Ashoka Chakra -->
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/ashoka_chakra.svg') }}">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <!-- National Tricolour Accent Ribbon -->
+  <div class="tricolour-bar"></div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="{{ url_for('index') }}" class="brand-logo" aria-label="NyayaGuide Homepage">
+        <div class="brand-emblem-wrap">
+          <img src="{{ url_for('static', filename='images/ashoka_chakra.svg') }}" alt="Ashoka Chakra" width="28" height="28">
+        </div>
+        <div class="brand-text">
+          <h1>Nyaya<span>Guide</span></h1>
+          <span class="brand-tagline">Indian Legal Awareness</span>
+        </div>
+      </a>
+
+      <!-- Mobile Navigation Hamburger -->
+      <button class="mobile-nav-toggle" id="mobile_nav_toggle" aria-label="Toggle Navigation">
+        ☰
+      </button>
+
+      <!-- Desktop & Mobile Menu -->
+      <nav>
+        <ul class="nav-menu" id="nav_menu">
+          <li><a href="{{ url_for('index') }}" class="nav-link {% if request.endpoint == 'index' %}active{% endif %}">Home</a></li>
+          <li><a href="{{ url_for('index') }}#situation_panel" class="nav-link">Find My Rights</a></li>
+          <li><a href="{{ url_for('browse_laws') }}" class="nav-link {% if request.endpoint == 'browse_laws' %}active{% endif %}">Browse Laws</a></li>
+          <li><a href="{{ url_for('legal_resources') }}" class="nav-link {% if request.endpoint == 'legal_resources' %}active{% endif %}">Legal Resources</a></li>
+          <li><a href="{{ url_for('download_data') }}" class="nav-link {% if request.endpoint == 'download_data' %}active{% endif %}">Download Data</a></li>
+          <li><a href="{{ url_for('about') }}" class="nav-link {% if request.endpoint == 'about' %}active{% endif %}">About</a></li>
+          <li><a href="{{ url_for('disclaimer') }}" class="nav-link {% if request.endpoint == 'disclaimer' %}active{% endif %}">Disclaimer</a></li>
+          <li>
+            <a href="{{ url_for('index') }}#situation_panel" class="nav-cta-btn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              Find Sections
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div style="max-width: 1040px; margin: 1rem auto; padding: 0 1.5rem;">
+          {% for category, message in messages %}
+            <div style="padding: 0.85rem 1.25rem; border-radius: 8px; margin-bottom: 0.75rem; 
+                        background: {% if category == 'error' %}#FEE2E2; color: #991B1B; border: 1px solid #F87171;
+                                    {% else %}#FEF3C7; color: #92400E; border: 1px solid #FCD34D;{% endif %}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3 class="font-serif">NyayaGuide</h3>
+        <p>An AI-assisted, source-grounded legal awareness platform helping citizens of India understand constitutional provisions, statutory rights, and official complaint mechanisms in simple language.</p>
+        <div style="display: flex; gap: 0.5rem; align-items: center;">
+          <span style="display: inline-block; width: 10px; height: 10px; background: #138808; border-radius: 50%;"></span>
+          <span style="font-size: 0.8rem; color: #CBD5E1;">Grounded in Official India Code Repositories</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal Explorations</h4>
+        <ul class="footer-links">
+          <li><a href="{{ url_for('index') }}#constitution_section">Constitution of India</a></li>
+          <li><a href="{{ url_for('browse_laws') }}?category=Criminal+Law">Bharatiya Nyaya Sanhita (BNS)</a></li>
+          <li><a href="{{ url_for('browse_laws') }}?category=Consumer+Protection">Consumer Protection Act</a></li>
+          <li><a href="{{ url_for('browse_laws') }}?category=Cyber+%26+Technology+Law">IT & Cyber Laws</a></li>
+          <li><a href="{{ url_for('browse_laws') }}?category=Motor+Vehicles+%26+Transport">Motor Accidents & Claims</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Citizens Assistance</h4>
+        <ul class="footer-links">
+          <li><a href="{{ url_for('legal_resources') }}#nalsa">NALSA Free Legal Aid (15100)</a></li>
+          <li><a href="{{ url_for('legal_resources') }}#cybercrime">National Cyber Helpline (1930)</a></li>
+          <li><a href="{{ url_for('legal_resources') }}#consumer">Consumer Grievances (1915)</a></li>
+          <li><a href="{{ url_for('legal_resources') }}#slsa">State Legal Services Authorities</a></li>
+          <li><a href="{{ url_for('legal_resources') }}#bar_councils">State Bar Councils</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Project & Data</h4>
+        <ul class="footer-links">
+          <li><a href="{{ url_for('download_data') }}">Download Legal Dataset (JSON/CSV)</a></li>
+          <li><a href="{{ url_for('download_data') }}#coverage">Jurisdiction Coverage Audit</a></li>
+          <li><a href="{{ url_for('about') }}">Methodology & Verification</a></li>
+          <li><a href="{{ url_for('disclaimer') }}">Legal Disclaimer & Safety</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-disclaimer-bar">
+      <p><strong>LEGAL INFORMATION DISCLAIMER:</strong> NyayaGuide is designed solely for public educational awareness and legal literacy. It does not provide formal legal advice, establish an attorney-client relationship, or guarantee legal outcomes. Laws change, and facts vary. In any urgent, contested, or court matter, always consult an enrolled advocate or approach your District Legal Services Authority (DLSA).</p>
+      <p style="margin-top: 0.4rem; color: #94A3B8;">Built with respect for the Constitution of India and national public legal repositories.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="{{ url_for('static', filename='js/speech.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

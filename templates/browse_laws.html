@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Browse Important Indian Laws — NyayaGuide{% endblock %}
+
+{% block content %}
+<section style="background: #FFFFFF; border-bottom: 1px solid var(--gold-border); padding: 3rem 1.5rem 2rem;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div class="hero-pill" style="margin-bottom: 0.75rem;">
+      <span>Central & State Legislation Catalog</span>
+    </div>
+    <h1 class="font-serif" style="font-size: 2.3rem; color: var(--navy); margin-bottom: 0.5rem;">
+      Browse Verified Indian Laws
+    </h1>
+    <p style="color: var(--text-muted); max-width: 700px; font-size: 1rem;">
+      Explore authentic Indian enactments indexed in the NyayaGuide database, including constitutional articles, the Bharatiya Nyaya Sanhita, consumer law, and digital privacy statutes.
+    </p>
+
+    <!-- Filters Bar -->
+    <form method="GET" action="{{ url_for('browse_laws') }}" style="display: flex; gap: 1rem; margin-top: 1.75rem; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 220px;">
+        <select name="category" class="custom-select" style="width: 100%; padding: 0.65rem 0.85rem;" onchange="this.form.submit()">
+          <option value="">All Legal Categories ({{ acts|length }} Acts)</option>
+          {% for cat in categories %}
+            <option value="{{ cat }}" {% if selected_category == cat %}selected{% endif %}>{{ cat }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div style="flex: 1; min-width: 220px;">
+        <select name="jurisdiction" class="custom-select" style="width: 100%; padding: 0.65rem 0.85rem;" onchange="this.form.submit()">
+          <option value="">All Jurisdictions (Central & States)</option>
+          {% for j in jurisdictions %}
+            <option value="{{ j.id }}" {% if selected_jurisdiction == j.id %}selected{% endif %}>{{ j.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      {% if selected_category or selected_jurisdiction %}
+        <div>
+          <a href="{{ url_for('browse_laws') }}" class="btn-sm-clear" style="display: inline-block; padding: 0.65rem 1rem;">
+            Reset Filters
+          </a>
+        </div>
+      {% endif %}
+    </form>
+  </div>
+</section>
+
+<!-- Acts Grid -->
+<section style="max-width: 1200px; margin: 2.5rem auto 4rem; padding: 0 1.5rem;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.75rem;">
+    {% for act in acts %}
+      <div class="provision-card" style="margin-bottom: 0;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+          <span class="act-badge">{{ act.category }}</span>
+          <span class="source-status-verified">
+            {% if act.status == 'in_force' %}In Force{% else %}{{ act.status|title }}{% endif %}
+          </span>
+        </div>
+
+        <h3 class="font-serif" style="font-size: 1.25rem; color: var(--navy); margin-bottom: 0.4rem;">
+          {{ act.short_title }}
+        </h3>
+        
+        <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 0.75rem; line-height: 1.45;">
+          {{ act.long_title or act.short_title }}
+        </p>
+
+        <div style="font-size: 0.82rem; color: var(--text-main); margin-bottom: 1rem; background: var(--ivory); padding: 0.65rem 0.85rem; border-radius: 6px;">
+          <div>Enacted: <strong>{{ act.enactment_year or 'N/A' }}</strong></div>
+          <div>Commencement: <strong>{{ act.commencement_date or 'N/A' }}</strong></div>
+          <div>Jurisdiction: <strong>{{ act.jurisdiction_name }}</strong></div>
+          <div>Verified Provisions: <strong>{{ act.provisions_count }}</strong></div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--gold-border); padding-top: 0.75rem;">
+          <a href="{{ url_for('law_detail', law_id=act.id) }}" style="font-size: 0.86rem; font-weight: 700; color: var(--navy);">
+            View Provisions ({{ act.provisions_count }}) →
+          </a>
+
+          <a href="{{ act.official_source_url }}" target="_blank" rel="noopener noreferrer" style="font-size: 0.8rem; color: var(--text-muted);">
+            India Code ↗
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

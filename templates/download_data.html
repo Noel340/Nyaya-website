@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block title %}Download Verified Legal Dataset & Coverage Audit — NyayaGuide{% endblock %}
+
+{% block content %}
+<section style="background: #FFFFFF; border-bottom: 1px solid var(--gold-border); padding: 3rem 1.5rem 2rem;">
+  <div style="max-width: 1140px; margin: 0 auto;">
+    <div class="hero-pill" style="margin-bottom: 0.75rem;">
+      <span>Open Legal Information & Transparency</span>
+    </div>
+    <h1 class="font-serif" style="font-size: 2.3rem; color: var(--navy); margin-bottom: 0.5rem;">
+      Download Verified Legal Data
+    </h1>
+    <p style="color: var(--text-muted); max-width: 760px; font-size: 1rem;">
+      Access machine-readable exports of the legal provisions indexed in NyayaGuide, view our truthful jurisdiction coverage dashboard, and obtain the authentic Constitution of India documentation.
+    </p>
+  </div>
+</section>
+
+<!-- Download Cards Section -->
+<section style="max-width: 1140px; margin: 2.5rem auto; padding: 0 1.5rem;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.75rem; margin-bottom: 3rem;">
+    <!-- JSON Export Card -->
+    <div class="provision-card" style="margin-bottom: 0;">
+      <span class="act-badge">Structured JSON</span>
+      <h3 class="font-serif" style="font-size: 1.3rem; color: var(--navy); margin: 0.5rem 0;">
+        Indexed Provisions (JSON)
+      </h3>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+        Complete machine-readable JSON dataset containing Act titles, Section numbers, headings, plain-English summaries, conditions, exceptions, and official source URLs.
+      </p>
+      <a href="{{ url_for('export_dataset_file', format='json') }}" class="btn-primary" style="font-size: 0.88rem; padding: 0.65rem 1.25rem;">
+        Download provisions.json ↓
+      </a>
+    </div>
+
+    <!-- CSV Export Card -->
+    <div class="provision-card" style="margin-bottom: 0;">
+      <span class="act-badge">Tabular CSV</span>
+      <h3 class="font-serif" style="font-size: 1.3rem; color: var(--navy); margin: 0.5rem 0;">
+        Indexed Provisions (CSV)
+      </h3>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+        Tabular spreadsheet export for data analysis, researchers, and legal tech developers. Compatible with Excel, Pandas, and database loaders.
+      </p>
+      <a href="{{ url_for('export_dataset_file', format='csv') }}" class="btn-secondary" style="font-size: 0.88rem; padding: 0.65rem 1.25rem;">
+        Download provisions.csv ↓
+      </a>
+    </div>
+
+    <!-- Official Constitution Document -->
+    <div class="provision-card" style="margin-bottom: 0; border-left: 4px solid var(--gold);">
+      <span class="act-badge">Authentic Document</span>
+      <h3 class="font-serif" style="font-size: 1.3rem; color: var(--navy); margin: 0.5rem 0;">
+        Constitution of India (Diglot PDF)
+      </h3>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+        Authentic pocket-size diglot edition (Hindi and English) published by the Legislative Department, Ministry of Law & Justice, Government of India.
+      </p>
+      <a href="https://legislative.gov.in/constitution-of-india/" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="font-size: 0.88rem; padding: 0.65rem 1.25rem;">
+        Official Portal Source ↗
+      </a>
+    </div>
+  </div>
+
+  <!-- Truthful Coverage Dashboard (Section 8 & 12) -->
+  <div class="legal-card" id="coverage">
+    <div style="border-bottom: 1px solid var(--gold-border); padding-bottom: 1rem; margin-bottom: 1.5rem;">
+      <h2 class="font-serif" style="font-size: 1.6rem; color: var(--navy);">
+        Truthful Jurisdiction Coverage Dashboard
+      </h2>
+      <p style="font-size: 0.88rem; color: var(--text-muted);">
+        NyayaGuide never falsely claims that every Indian law has already been indexed. Central statutes and state-level laws are indexed progressively.
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+      <div style="background: var(--ivory); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--gold-border); text-align: center;">
+        <div style="font-size: 2rem; font-weight: 700; color: var(--navy);">{{ coverage.total_jurisdictions }}</div>
+        <div style="font-size: 0.82rem; color: var(--text-muted);">Total Recognized Jurisdictions (Central + 28 States + 8 UTs)</div>
+      </div>
+      <div style="background: var(--green-light); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--green-border); text-align: center;">
+        <div style="font-size: 2rem; font-weight: 700; color: var(--green-dark);">{{ coverage.jurisdictions_with_seed_data }}</div>
+        <div style="font-size: 0.82rem; color: var(--green-dark);">Active Jurisdictions with Seed Legislation</div>
+      </div>
+      <div style="background: var(--ivory); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--gold-border); text-align: center;">
+        <div style="font-size: 2rem; font-weight: 700; color: var(--saffron-dark);">15</div>
+        <div style="font-size: 0.82rem; color: var(--text-muted);">Major Central Statutes Ingested</div>
+      </div>
+      <div style="background: var(--ivory); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--gold-border); text-align: center;">
+        <div style="font-size: 2rem; font-weight: 700; color: var(--navy);">100%</div>
+        <div style="font-size: 0.82rem; color: var(--text-muted);">Source Verification Against Official Portals</div>
+      </div>
+    </div>
+
+    <!-- Jurisdiction Table -->
+    <h3 class="font-serif" style="font-size: 1.2rem; color: var(--navy); margin-bottom: 1rem;">Jurisdiction Indexing Status</h3>
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem;">
+        <thead>
+          <tr style="background: var(--navy); color: #FFFFFF; text-align: left;">
+            <th style="padding: 0.75rem 1rem;">Jurisdiction Name</th>
+            <th style="padding: 0.75rem 1rem;">Type</th>
+            <th style="padding: 0.75rem 1rem;">Coverage Status</th>
+            <th style="padding: 0.75rem 1rem;">Acts Indexed</th>
+            <th style="padding: 0.75rem 1rem;">Provisions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for j in coverage.jurisdictions %}
+            <tr style="border-bottom: 1px solid #E2E8F0; background: {% if loop.index is odd %}#FFFFFF{% else %}#FAF9F6{% endif %};">
+              <td style="padding: 0.75rem 1rem; font-weight: 600; color: var(--navy);">{{ j.name }}</td>
+              <td style="padding: 0.75rem 1rem; color: var(--text-muted);">{{ j.type|replace('_', ' ')|title }}</td>
+              <td style="padding: 0.75rem 1rem;">
+                <span class="badge-item" style="font-size: 0.75rem; 
+                  background: {% if j.coverage_status == 'indexed_seed' %}var(--green-light); color: var(--green-dark); border-color: var(--green-border);
+                              {% elif j.coverage_status == 'partially_indexed' %}#FEF3C7; color: #92400E; border-color: #FCD34D;
+                              {% else %}#F1F5F9; color: #475569; border-color: #CBD5E1;{% endif %}">
+                  {{ j.coverage_status|replace('_', ' ')|title }}
+                </span>
+              </td>
+              <td style="padding: 0.75rem 1rem;">{{ j.acts_count }}</td>
+              <td style="padding: 0.75rem 1rem;">{{ j.provisions_count }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock %}

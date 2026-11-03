@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Verified Legal Aid & Official Helplines — NyayaGuide{% endblock %}
+
+{% block content %}
+<section style="background: #FFFFFF; border-bottom: 1px solid var(--gold-border); padding: 3rem 1.5rem 2rem;">
+  <div style="max-width: 1140px; margin: 0 auto;">
+    <div class="hero-pill" style="margin-bottom: 0.75rem;">
+      <span>Article 39A of the Constitution of India</span>
+    </div>
+    <h1 class="font-serif" style="font-size: 2.3rem; color: var(--navy); margin-bottom: 0.5rem;">
+      Verified Legal Aid & Official Assistance
+    </h1>
+    <p style="color: var(--text-muted); max-width: 760px; font-size: 1rem;">
+      Under Article 39A of the Indian Constitution and the Legal Services Authorities Act, 1987, eligible citizens are entitled to free, state-sponsored legal aid and appointed advocates. All resources listed below are verified official statutory authorities and government helplines.
+    </p>
+
+    <!-- State Filter -->
+    <form method="GET" action="{{ url_for('legal_resources') }}" style="display: flex; gap: 1rem; margin-top: 1.75rem; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 260px;">
+        <select name="jurisdiction" class="custom-select" style="width: 100%; padding: 0.65rem 0.85rem;" onchange="this.form.submit()">
+          <option value="">All States & National Authorities</option>
+          {% for j in jurisdictions %}
+            <option value="{{ j.id }}" {% if selected_jurisdiction == j.id %}selected{% endif %}>{{ j.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div style="flex: 1; min-width: 260px;">
+        <select name="category" class="custom-select" style="width: 100%; padding: 0.65rem 0.85rem;" onchange="this.form.submit()">
+          <option value="">All Assistance Categories</option>
+          <option value="national_aid" {% if selected_category == 'national_aid' %}selected{% endif %}>National Legal Aid (NALSA)</option>
+          <option value="state_aid" {% if selected_category == 'state_aid' %}selected{% endif %}>State Legal Services (SLSA)</option>
+          <option value="cyber_helpline" {% if selected_category == 'cyber_helpline' %}selected{% endif %}>Cybercrime Reporting (1930)</option>
+          <option value="consumer_helpline" {% if selected_category == 'consumer_helpline' %}selected{% endif %}>Consumer Protection (1915)</option>
+          <option value="emergency" {% if selected_category == 'emergency' %}selected{% endif %}>Emergency & Women Support</option>
+          <option value="bar_council" {% if selected_category == 'bar_council' %}selected{% endif %}>Bar Council Verification</option>
+        </select>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Resources Directory -->
+<section style="max-width: 1140px; margin: 2.5rem auto 4rem; padding: 0 1.5rem;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.75rem;">
+    {% for aid in resources %}
+      <div class="provision-card" style="margin-bottom: 0;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+          <span class="act-badge">{{ aid.category|replace('_', ' ')|title }}</span>
+          <span class="source-status-verified">✓ Official Statutory Body</span>
+        </div>
+
+        <h3 class="font-serif" style="font-size: 1.22rem; color: var(--navy); margin-bottom: 0.4rem;">
+          {{ aid.title }}
+        </h3>
+
+        {% if aid.helpline_number %}
+          <div style="margin: 0.5rem 0;">
+            <span class="aid-helpline-chip" style="font-size: 0.95rem; padding: 0.35rem 0.75rem;">
+              ☎ {{ aid.helpline_number }}
+            </span>
+          </div>
+        {% endif %}
+
+        <p style="font-size: 0.88rem; color: var(--text-main); margin-bottom: 0.85rem; line-height: 1.5;">
+          {{ aid.description }}
+        </p>
+
+        {% if aid.eligibility_criteria %}
+          <div style="font-size: 0.8rem; background: var(--ivory); padding: 0.65rem 0.85rem; border-radius: 6px; border: 1px solid var(--gold-border); margin-bottom: 1rem;">
+            <strong>Eligibility:</strong> {{ aid.eligibility_criteria }}
+          </div>
+        {% endif %}
+
+        <div style="border-top: 1px dashed var(--gold-border); padding-top: 0.75rem; display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 0.78rem; color: var(--text-muted);">
+            Jurisdiction: {{ aid.jurisdiction_name or 'All India' }}
+          </span>
+
+          <a href="{{ aid.official_portal }}" target="_blank" rel="noopener noreferrer" class="official-source-link">
+            Visit Official Portal ↗
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

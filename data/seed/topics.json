@@ -1,0 +1,86 @@
+[
+  {
+    "id": "topic_cybercrime",
+    "name": "Cybercrime & Online Fraud",
+    "slug": "cybercrime-online-fraud",
+    "description": "Financial frauds, online phishing, identity theft, OTP fraud, unauthorized access, and hacking under IT Act and BNS.",
+    "keywords": "cyber fraud online scam otp phishing hacked upi fake website cheat bank transfer digital arrest"
+  },
+  {
+    "id": "topic_consumer",
+    "name": "Consumer Complaints & E-Commerce",
+    "slug": "consumer-complaints",
+    "description": "Deficiency in service, defective products, online delivery failure, unfair trade practices under Consumer Protection Act 2019.",
+    "keywords": "consumer refund defective product seller refused delivery warranty unfair trade practice replacement"
+  },
+  {
+    "id": "topic_employment",
+    "name": "Employment & Workplace Disputes",
+    "slug": "employment-workplace",
+    "description": "Unpaid wages, illegal termination, workplace harassment, notice period disputes, gratuity and PF under labour codes.",
+    "keywords": "salary unpaid fired terminated employer workplace harassment notice period severance gratuity provident fund"
+  },
+  {
+    "id": "topic_family",
+    "name": "Family & Maintenance Matters",
+    "slug": "family-maintenance",
+    "description": "Maintenance rights for wife, children, and elderly parents under BNSS/CrPC Sec 125, Domestic Violence Act, and personal laws.",
+    "keywords": "maintenance domestic violence divorce custody alimony child support cruelty desertion elderly parents"
+  },
+  {
+    "id": "topic_property",
+    "name": "Property & Rental Disputes",
+    "slug": "property-rental",
+    "description": "Security deposit deduction, unlawful eviction, landlord harassment, tenant rights, boundary disputes, Transfer of Property Act.",
+    "keywords": "rent landlord tenant deposit eviction lease agreement illegal possession security deposit flat"
+  },
+  {
+    "id": "topic_education",
+    "name": "Education & Student Rights",
+    "slug": "education-student-rights",
+    "description": "Right to Education (Article 21A), fee disputes, withholding certificates, ragging, unfair admission cancellation.",
+    "keywords": "student school college university certificates withheld ragging fee refund admission right to education"
+  },
+  {
+    "id": "topic_criminal",
+    "name": "Criminal Law & Offences",
+    "slug": "criminal-law",
+    "description": "Offences against body, property, extortion, cheating, assault, FIR registration under Bharatiya Nyaya Sanhita (BNS) and BNSS.",
+    "keywords": "fir police arrest assault theft cheating threat extortion bns ipc bail criminal intimidation"
+  },
+  {
+    "id": "topic_constitutional",
+    "name": "Constitutional & Fundamental Rights",
+    "slug": "constitutional-fundamental-rights",
+    "description": "Equality (Art 14), Freedom of Speech (Art 19), Right to Life & Liberty (Art 21), Writ Petitions (Art 32 & 226).",
+    "keywords": "fundamental rights constitution equality liberty freedom of speech writ habeas corpus discrimination police brutality"
+  },
+  {
+    "id": "topic_banking",
+    "name": "Banking & Payment Disputes",
+    "slug": "banking-payments",
+    "description": "Cheque bounce under Sec 138 NI Act, unauthorized ATM/UPI debits, loan recovery agent harassment under RBI guidelines.",
+    "keywords": "cheque bounce ni act 138 unauthorized transaction recovery agent rbi ombudsman bank loan emi"
+  },
+  {
+    "id": "topic_road_accidents",
+    "name": "Road Accidents & Compensation",
+    "slug": "road-accidents",
+    "description": "Motor accident claims, third-party insurance, hit-and-run compensation under Motor Vehicles Act (amended 2019) and MACT.",
+    "keywords": "car accident road crash hit and run mact compensation insurance claim driver rash driving"
+  },
+  {
+    "id": "topic_privacy",
+    "name": "Privacy, Defamation & Online Harassment",
+    "slug": "privacy-harassment",
+    "description": "Morphing photos, stalking, non-consensual image sharing, defamation, right to privacy under Art 21, IT Act & BNS.",
+    "keywords": "photographs morphed stalking online harassment blackmail privacy leaked photos defamation reputation"
+  },
+  {
+    "id": "topic_other",
+    "name": "Other Legal Questions",
+    "slug": "other-legal-questions",
+    "description": "General civil rights, administrative grievances, Right to Information (RTI), and municipal notices.",
+    "keywords": "legal notice agreement affidavit contract rti public grievance stamp paper notary"
+  }
+]

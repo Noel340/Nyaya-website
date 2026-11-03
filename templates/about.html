@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}About NyayaGuide — Mission, Ethics & Verification Standards{% endblock %}
+
+{% block content %}
+<section style="background: #FFFFFF; border-bottom: 1px solid var(--gold-border); padding: 3rem 1.5rem 2rem;">
+  <div style="max-width: 960px; margin: 0 auto;">
+    <div class="hero-pill" style="margin-bottom: 0.75rem;">
+      <span>Empowering Indian Citizens Through Legal Literacy</span>
+    </div>
+    <h1 class="font-serif" style="font-size: 2.3rem; color: var(--navy); margin-bottom: 0.5rem;">
+      About NyayaGuide
+    </h1>
+    <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6;">
+      NyayaGuide is an AI-assisted legal awareness platform developed to bridge the gap between complex Indian statutory language and the everyday problems of ordinary citizens.
+    </p>
+  </div>
+</section>
+
+<section style="max-width: 960px; margin: 2.5rem auto 4rem; padding: 0 1.5rem;">
+  <div class="legal-card" style="margin-bottom: 2rem;">
+    <h2 class="font-serif" style="font-size: 1.5rem; color: var(--navy); margin-bottom: 0.75rem;">
+      Our Core Architectural Philosophy
+    </h2>
+    <p style="color: var(--text-main); margin-bottom: 1rem; line-height: 1.65;">
+      Unlike conversational LLMs that freely generate legal sections from ungrounded memory—frequently creating nonexistent case citations or hallucinated section numbers—NyayaGuide implements a <strong>Source-Grounded Retrieval Architecture (RAG)</strong>.
+    </p>
+    <ul style="margin-left: 1.5rem; color: var(--text-main); line-height: 1.7; margin-bottom: 1.5rem;">
+      <li><strong>Local Relational & Full-Text Search:</strong> All queries are mapped through SQLite FTS5 search indexes and topic heuristics against verified database provisions.</li>
+      <li><strong>Strict Citation Validation:</strong> Any statutory provision cited in our explanations is cross-checked against database primary keys. Hallucinated section IDs are automatically rejected.</li>
+      <li><strong>Criminal Transition Handling:</strong> Explicitly accounts for the 1 July 2024 transition from the Indian Penal Code (IPC 1860) to the Bharatiya Nyaya Sanhita (BNS 2023), guiding citizens based on the date of their incident.</li>
+      <li><strong>Privacy-First Speech Input:</strong> Voice transcription utilizes the browser's native Web Speech API without sending, saving, or transcribing audio files on our servers.</li>
+    </ul>
+
+    <h2 class="font-serif" style="font-size: 1.5rem; color: var(--navy); margin-bottom: 0.75rem;">
+      Ethical Standards & No Hallucination Policy
+    </h2>
+    <p style="color: var(--text-main); line-height: 1.65; margin-bottom: 1rem;">
+      We believe legal technology must hold itself to the highest standard of honesty.
+    </p>
+    <ul style="margin-left: 1.5rem; color: var(--text-main); line-height: 1.7;">
+      <li>We <strong>never</strong> invent fake lawyer profiles, ratings, or arbitrary fees. When recommending legal help, we specify the appropriate practice area (e.g. Consumer, Criminal, Labour) and direct users to their State Bar Council or official legal aid clinics.</li>
+      <li>We <strong>never</strong> claim that every single Indian law is indexed. We publish a truthful coverage dashboard detailing which Central and State statutes are actively indexed.</li>
+      <li>If no matching verified law exists for a user's unique query, we state so openly instead of generating a plausible-sounding fiction.</li>
+    </ul>
+  </div>
+
+  <div class="feature-box" style="background: var(--ivory);">
+    <h3 class="font-serif" style="font-size: 1.25rem; color: var(--navy); margin-bottom: 0.5rem;">
+      Official Data Repositories Respected
+    </h3>
+    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+      NyayaGuide references official open legal publications from the Legislative Department (Ministry of Law and Justice), India Code Information System (indiacode.nic.in), National Legal Services Authority (nalsa.gov.in), and National Cyber Crime Reporting Portal (cybercrime.gov.in).
+    </p>
+  </div>
+</section>
+{% endblock %}

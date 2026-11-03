@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <!-- Navy Blue Ashoka Chakra with 24 Spokes -->
+  <defs>
+    <radialGradient id="chakraShine" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#14213D" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <circle cx="100" cy="100" r="94" fill="none" stroke="#14213D" stroke-width="4.5" />
+  <circle cx="100" cy="100" r="88" fill="none" stroke="#14213D" stroke-width="1.8" />
+  <circle cx="100" cy="100" r="22" fill="#14213D" />
+  <circle cx="100" cy="100" r="10" fill="#FFF9F0" />
+  
+  <!-- 24 Spokes -->
+  <g stroke="#14213D" stroke-width="2.2" stroke-linecap="round">
+    <!-- Spoke group with 15-degree rotations (360/24 = 15) -->
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(15 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(30 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(45 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(60 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(75 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(90 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(105 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(120 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(135 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(150 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(165 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(180 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(195 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(210 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(225 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(240 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(255 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(270 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(285 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(300 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(315 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(330 100 100)" />
+    <path d="M100,78 L100,12 M100,78 L97,35 L100,12 L103,35 Z" fill="#14213D" transform="rotate(345 100 100)" />
+  </g>
+</svg>

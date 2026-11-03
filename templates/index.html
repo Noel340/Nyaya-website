@@ -1,0 +1,351 @@
+{% extends "base.html" %}
+
+{% block title %}NyayaGuide — Know Your Rights. Understand Your Law.{% endblock %}
+
+{% block content %}
+<!-- 1. Hero Section -->
+<section class="hero-section">
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="hero-pill">
+        <span class="hero-pill-dot"></span>
+        <span>75+ Years of the Republic & Constitution of India</span>
+      </div>
+      <h1 class="hero-title">
+        Know Your <span>Rights</span>.<br>Understand Your <span>Law</span>.
+      </h1>
+      <p class="hero-desc">
+        Describe your situation in your own words. Explore potentially relevant Indian laws, understand your options, and find the right kind of legal assistance.
+      </p>
+      <div class="hero-actions">
+        <a href="#situation_panel" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          Understand My Rights
+        </a>
+        <a href="#constitution_section" class="btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+            <path d="M2 12h20"></path>
+          </svg>
+          Explore Indian Constitution
+        </a>
+      </div>
+    </div>
+
+    <!-- Constitution Hero Visual Card -->
+    <div class="hero-card-visual">
+      <div class="constitution-frame">
+        <img src="{{ url_for('static', filename='images/constitution_book.webp') }}" alt="Constitution of India Book and National Emblem" width="440" height="440">
+        <div class="frame-overlay-badge">
+          <h4 class="font-serif">The Constitution of India</h4>
+          <p>The sovereign foundation of justice, liberty, equality, and fraternity for every citizen.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Situation Input Panel (Core Interactive Feature) -->
+<section class="situation-panel-section" id="situation_panel">
+  <div class="panel-container">
+    <div class="legal-card">
+      <div class="legal-card-header">
+        <div class="card-title-group">
+          <h2 class="font-serif">Describe Your Situation</h2>
+          <p>You can type or speak in simple everyday words. No legal jargon or section numbers needed.</p>
+        </div>
+        <div class="security-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          Private & Grounded in Law
+        </div>
+      </div>
+
+      <!-- Search Form -->
+      <form action="{{ url_for('find_sections') }}" method="POST" id="situation_form">
+        <!-- Situation Textarea -->
+        <div class="situation-box-wrap">
+          <textarea 
+            name="situation_text" 
+            id="situation_text" 
+            class="situation-textarea" 
+            rows="5"
+            placeholder="Tell us what happened. You can describe your problem in simple language..."
+            required
+          ></textarea>
+        </div>
+
+        <!-- Speech-to-Text Toolbar -->
+        <div class="speech-toolbar">
+          <div class="speech-controls-left">
+            <button type="button" class="btn-mic" id="mic_btn" title="Click to speak your situation">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                <line x1="12" x2="12" y1="19" y2="22"/>
+              </svg>
+              Speak Your Situation
+            </button>
+
+            <!-- Recording Indicator -->
+            <div class="recording-indicator" id="recording_indicator">
+              <div class="audio-waves">
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+              </div>
+              <span>Listening...</span>
+            </div>
+            
+            <span id="speech_status_text" style="font-size: 0.8rem; color: var(--text-muted);"></span>
+          </div>
+
+          <div class="speech-controls-right">
+            <!-- Language Selector -->
+            <div class="lang-selector-wrap">
+              <label for="speech_language">Language:</label>
+              <select id="speech_language" class="custom-select">
+                <option value="en-IN" selected>English (India)</option>
+                <option value="hi-IN">Hindi (हिंदी)</option>
+                <option value="ml-IN">Malayalam (മലയാളം)</option>
+                <option value="ta-IN">Tamil (தமிழ்)</option>
+                <option value="te-IN">Telugu (తెలుగు)</option>
+                <option value="bn-IN">Bengali (বাংলা)</option>
+                <option value="mr-IN">Marathi (मराठी)</option>
+                <option value="gu-IN">Gujarati (ગુજરાતી)</option>
+              </select>
+            </div>
+
+            <!-- Clear text button -->
+            <button type="button" class="btn-sm-clear" id="clear_text_btn" title="Clear text area">
+              Clear Text
+            </button>
+          </div>
+        </div>
+
+        <!-- Context & Metadata Row -->
+        <div class="panel-grid-options">
+          <!-- State / UT Selector -->
+          <div class="option-group">
+            <label for="jurisdiction_select">Select State or Union Territory *</label>
+            <select name="jurisdiction" id="jurisdiction_select" class="custom-select" required>
+              {% for j in jurisdictions %}
+                <option value="{{ j.id }}" {% if j.id == 'IN-CENTRAL' %}selected{% endif %}>
+                  {{ j.name }} {% if j.type != 'central' %}({{ j.type|replace('_', ' ')|title }}){% endif %}
+                </option>
+              {% endfor %}
+            </select>
+            <small>Applies relevant Central statutes and local state laws.</small>
+          </div>
+
+          <!-- Incident Date Field -->
+          <div class="option-group">
+            <label for="incident_date">Incident Date (Optional)</label>
+            <input type="date" name="incident_date" id="incident_date" max="2030-12-31">
+            <small>Distinguishes BNS (post-July 2024) from IPC (pre-July 2024).</small>
+          </div>
+
+          <!-- Category Selector -->
+          <div class="option-group">
+            <label for="category_select">Category (Optional)</label>
+            <select name="category" id="category_select" class="custom-select">
+              <option value="auto" selected>✨ Automatic Topic Detection</option>
+              {% for t in topics %}
+                <option value="{{ t.id }}">{{ t.name }}</option>
+              {% endfor %}
+            </select>
+            <small>Leave automatic or select a focused practice area.</small>
+          </div>
+        </div>
+
+        <!-- Action Row -->
+        <div class="panel-submit-row">
+          <div style="font-size: 0.8rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.4rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            Speech recognition accuracy varies by device and microphone quality. Edit text freely.
+          </div>
+
+          <button type="submit" class="find-sections-btn" id="find_sections_btn">
+            <img src="{{ url_for('static', filename='images/ashoka_chakra.svg') }}" class="btn-icon-chakra" alt="Chakra">
+            Find Sections
+          </button>
+        </div>
+      </form>
+
+      <!-- Clickable Example Prompts -->
+      <div class="example-prompts-wrap">
+        <div class="example-prompts-label">Try an example situation:</div>
+        <div class="prompt-chips">
+          <button type="button" class="prompt-chip" data-category="topic_consumer">
+            "An online seller took my money but did not deliver the product."
+          </button>
+          <button type="button" class="prompt-chip" data-category="topic_privacy">
+            "Someone is using my photographs without permission."
+          </button>
+          <button type="button" class="prompt-chip" data-category="topic_employment">
+            "My employer has not paid my salary."
+          </button>
+          <button type="button" class="prompt-chip" data-category="topic_criminal">
+            "I want to understand my rights if I receive a legal notice."
+          </button>
+          <button type="button" class="prompt-chip" data-category="topic_property">
+            "I am facing a rental deposit dispute."
+          </button>
+          <button type="button" class="prompt-chip" data-category="topic_banking">
+            "A cheque issued to me bounced due to insufficient balance."
+          </button>
+          <button type="button" class="prompt-chip" data-category="topic_road_accidents">
+            "Car hit my relative in a road accident and sped away."
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. How NyayaGuide Works -->
+<section class="features-section">
+  <div class="section-head">
+    <h2 class="font-serif">How NyayaGuide Works</h2>
+    <p>A transparent, four-step pipeline connecting everyday situations with verified statutory provisions.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-box">
+      <div class="feature-icon-circle">1</div>
+      <h3 class="font-serif">Describe or Speak</h3>
+      <p>Express your grievance or question in plain words. Voice recognition is processed locally in your browser without retaining private audio.</p>
+    </div>
+    <div class="feature-box">
+      <div class="feature-icon-circle">2</div>
+      <h3 class="font-serif">Grounded Retrieval</h3>
+      <p>Queries are matched against the local legal database of Central and State legislation using SQLite FTS5 full-text search and temporal versioning.</p>
+    </div>
+    <div class="feature-box">
+      <div class="feature-icon-circle">3</div>
+      <h3 class="font-serif">Plain-Language Meaning</h3>
+      <p>Complex legal texts are converted into simple explanations detailing applicability, required conditions to prove, and statutory exceptions.</p>
+    </div>
+    <div class="feature-box">
+      <div class="feature-icon-circle">4</div>
+      <h3 class="font-serif">Actionable Next Steps</h3>
+      <p>Receive recommendations on the exact type of lawyer to consult, verified NALSA legal aid contacts, and official government portals for lodging complaints.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Explore Constitutional Rights -->
+<section class="features-section" id="constitution_section" style="background: var(--ivory);">
+  <div class="section-head">
+    <div class="hero-pill" style="margin-bottom: 0.75rem;">
+      <span>The Supreme Law of India</span>
+    </div>
+    <h2 class="font-serif">Fundamental Rights Guaranteed by the Constitution</h2>
+    <p>Part III of the Constitution of India guarantees fundamental liberties enforceable against the State.</p>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-box" style="border-left: 4px solid var(--gold);">
+      <span class="act-badge">Article 14</span>
+      <h3 class="font-serif">Equality Before Law</h3>
+      <p>Prohibits arbitrary discrimination by public bodies and state departments. Every person enjoys equal protection of laws within India.</p>
+    </div>
+
+    <div class="feature-box" style="border-left: 4px solid var(--saffron);">
+      <span class="act-badge">Article 19(1)(a)</span>
+      <h3 class="font-serif">Freedom of Speech & Expression</h3>
+      <p>Protects peaceful public expression, publishing opinions, and peaceful assembly, subject only to reasonable restrictions under Art 19(2).</p>
+    </div>
+
+    <div class="feature-box" style="border-left: 4px solid var(--green);">
+      <span class="act-badge">Article 21</span>
+      <h3 class="font-serif">Protection of Life, Liberty & Privacy</h3>
+      <p>The cornerstone of Indian jurisprudence. Encompasses the right to dignity, personal liberty, clean environment, fair trial, and individual privacy.</p>
+    </div>
+
+    <div class="feature-box" style="border-left: 4px solid var(--navy);">
+      <span class="act-badge">Article 21A</span>
+      <h3 class="font-serif">Right to Education</h3>
+      <p>Mandates free and compulsory elementary education for all children between the ages of 6 and 14 years across India.</p>
+    </div>
+
+    <div class="feature-box" style="border-left: 4px solid var(--gold);">
+      <span class="act-badge">Article 22</span>
+      <h3 class="font-serif">Protection Against Arrest</h3>
+      <p>Mandates that anyone arrested must be informed of grounds, allowed to consult counsel of choice, and produced before a Magistrate within 24 hours.</p>
+    </div>
+
+    <div class="feature-box" style="border-left: 4px solid var(--saffron);">
+      <span class="act-badge">Articles 32 & 226</span>
+      <h3 class="font-serif">Constitutional Writ Remedies</h3>
+      <p>Guarantees the direct right to move the Supreme Court (Art 32) and High Courts (Art 226) for writs of Habeas Corpus, Mandamus, and Certiorari.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Browse Important Indian Laws Banner -->
+<section class="features-section">
+  <div class="section-head">
+    <h2 class="font-serif">Major Legislation in Force</h2>
+    <p>From the criminal law transition to digital data protection and consumer rights.</p>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-box">
+      <h3 class="font-serif">Bharatiya Nyaya Sanhita (BNS 2023)</h3>
+      <p>The substantive penal code of India effective from <strong>1 July 2024</strong>, replacing the Indian Penal Code, 1860 for modern offences.</p>
+      <a href="{{ url_for('browse_laws') }}?category=Criminal+Law" style="display: inline-block; margin-top: 0.75rem; font-weight: 600; color: var(--saffron-dark);">Browse BNS Sections →</a>
+    </div>
+
+    <div class="feature-box">
+      <h3 class="font-serif">Consumer Protection Act, 2019</h3>
+      <p>Protects consumers against e-commerce fraud, misleading advertising, defective products, and deficient services with online e-Daakhil filing.</p>
+      <a href="{{ url_for('browse_laws') }}?category=Consumer+Protection" style="display: inline-block; margin-top: 0.75rem; font-weight: 600; color: var(--saffron-dark);">Browse CPA Sections →</a>
+    </div>
+
+    <div class="feature-box">
+      <h3 class="font-serif">IT Act & DPDP Act, 2023</h3>
+      <p>Penalizes identity theft, cyber-stalking, phishing, and regulates the lawful processing of digital personal data across platforms.</p>
+      <a href="{{ url_for('browse_laws') }}?category=Cyber+%26+Technology+Law" style="display: inline-block; margin-top: 0.75rem; font-weight: 600; color: var(--saffron-dark);">Browse Cyber Laws →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 6. FAQ Section -->
+<section class="features-section" style="background: var(--ivory);">
+  <div class="section-head">
+    <h2 class="font-serif">Frequently Asked Questions</h2>
+    <p>Understanding the capabilities and boundaries of NyayaGuide.</p>
+  </div>
+
+  <div style="max-width: 860px; margin: 0 auto;">
+    <div class="feature-box" style="margin-bottom: 1rem;">
+      <h3 class="font-serif">Does NyayaGuide give formal legal advice?</h3>
+      <p>No. NyayaGuide provides educational legal awareness and helps you identify relevant statutory provisions and official legal aid channels. It does not replace a licensed advocate.</p>
+    </div>
+
+    <div class="feature-box" style="margin-bottom: 1rem;">
+      <h3 class="font-serif">How does NyayaGuide handle the new criminal laws?</h3>
+      <p>The Bharatiya Nyaya Sanhita (BNS 2023) came into force on 1 July 2024. For incidents on or after this date, BNS applies. For incidents prior to 1 July 2024, the Indian Penal Code applies. NyayaGuide tracks both statutes and notes cross-statutory relationships.</p>
+    </div>
+
+    <div class="feature-box" style="margin-bottom: 1rem;">
+      <h3 class="font-serif">Does NyayaGuide record or store my voice?</h3>
+      <p>No. Voice recognition is executed client-side via your browser's Web Speech API. Audio is never sent to or retained on our backend servers.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
